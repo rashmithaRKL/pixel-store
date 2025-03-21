@@ -14,8 +14,8 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   className = '',
   once = true
 }) => {
-  // Create a generic ref that accommodates all possible HTML elements
-  const elementRef = useRef<HTMLElement>(null);
+  // Create a ref based on the HTML tag type
+  const elementRef = useRef<HTMLElement | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const hasAnimated = useRef(false);
 
@@ -78,17 +78,26 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     };
   }, [text, once]);
 
-  // Use createElement instead of JSX to handle dynamic component type
-  const Element = tag as keyof JSX.IntrinsicElements;
+  // Render the appropriate element based on the tag prop
+  const renderElement = () => {
+    const props = {
+      ref: elementRef,
+      className: className
+    };
+
+    switch (tag) {
+      case 'h1': return <h1 {...props}>{text}</h1>;
+      case 'h2': return <h2 {...props}>{text}</h2>;
+      case 'h3': return <h3 {...props}>{text}</h3>;
+      case 'h4': return <h4 {...props}>{text}</h4>;
+      case 'h5': return <h5 {...props}>{text}</h5>;
+      case 'h6': return <h6 {...props}>{text}</h6>;
+      case 'p': return <p {...props}>{text}</p>;
+      default: return <span {...props}>{text}</span>;
+    }
+  };
   
-  return (
-    <Element
-      ref={elementRef as any}
-      className={className}
-    >
-      {text}
-    </Element>
-  );
+  return renderElement();
 };
 
 export default AnimatedText;

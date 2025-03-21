@@ -84,18 +84,36 @@ const Hero: React.FC<HeroProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/40"></div>
         </>
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-background"></div>
+        <div className="hero-gradient"></div>
       )}
+
+      {/* Moving Background Particles */}
+      <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <div 
+            key={i} 
+            className="absolute rounded-full bg-primary/20"
+            style={{
+              width: `${Math.random() * 300 + 50}px`,
+              height: `${Math.random() * 300 + 50}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${Math.random() * 10 + 15}s`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Content */}
       <div className="container px-4 md:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium animate-fade-in">
+          <div className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium animate-fade-in backdrop-blur-sm">
             Next-Gen Computing Solutions
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-            <AnimatedText text={title} />
+            <AnimatedText text={title} tag="h1" />
           </h1>
           
           <p className="text-xl md:text-2xl text-foreground/80 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
@@ -106,7 +124,7 @@ const Hero: React.FC<HeroProps> = ({
             {primaryCta && (
               <Link
                 to={primaryCta.link}
-                className="button-glow bg-primary text-primary-foreground rounded-lg px-6 py-3 text-base md:text-lg font-medium inline-flex items-center justify-center"
+                className="button-glow fancy-border bg-primary text-primary-foreground rounded-lg px-6 py-3 text-base md:text-lg font-medium inline-flex items-center justify-center"
               >
                 {primaryCta.text}
                 <ChevronRight size={18} className="ml-2" />

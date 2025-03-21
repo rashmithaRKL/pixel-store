@@ -122,6 +122,65 @@
   .card-highlight {
     @apply before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-primary/20 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100;
   }
+  
+  /* New UI components */
+  .fancy-border {
+    @apply relative rounded-lg overflow-hidden;
+  }
+  
+  .fancy-border::before {
+    content: '';
+    @apply absolute -inset-[2px] bg-gradient-to-r from-primary/80 via-blue-400 to-primary/80 rounded-lg opacity-0 transition-opacity duration-300;
+    z-index: -1;
+  }
+  
+  .fancy-border:hover::before {
+    @apply opacity-100;
+    animation: border-flow 2s linear infinite;
+  }
+  
+  .feature-card {
+    @apply relative bg-card rounded-xl p-6 transition-all duration-500 border border-border/50 overflow-hidden;
+  }
+  
+  .feature-card::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary/80 to-blue-400 transform scale-x-0 origin-left transition-transform duration-300;
+  }
+  
+  .feature-card:hover {
+    @apply shadow-lg -translate-y-1 border-primary/20;
+  }
+  
+  .feature-card:hover::after {
+    @apply transform scale-x-100;
+  }
+  
+  .hero-gradient {
+    @apply absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background/95 pointer-events-none;
+  }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  .stagger-animate-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .stagger-animate-children.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .stagger-animate-children.is-visible > *:nth-child(1) { transition-delay: 0.1s; }
+  .stagger-animate-children.is-visible > *:nth-child(2) { transition-delay: 0.2s; }
+  .stagger-animate-children.is-visible > *:nth-child(3) { transition-delay: 0.3s; }
+  .stagger-animate-children.is-visible > *:nth-child(4) { transition-delay: 0.4s; }
+  .stagger-animate-children.is-visible > *:nth-child(5) { transition-delay: 0.5s; }
+  .stagger-animate-children.is-visible > *:nth-child(6) { transition-delay: 0.6s; }
 }
 
 /* Custom Scrollbar */
@@ -148,6 +207,24 @@
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Animation Keyframes */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 122, 255, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 122, 255, 0.6); }
 }
 
 /* Prevent FOUC */

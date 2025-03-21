@@ -28,15 +28,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+          // Don't unobserve for staggered child animations
+          if (!entry.target.classList.contains('stagger-animate-children')) {
+            observer.unobserve(entry.target);
+          }
         }
       });
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
     
-    // Observe all elements with the animate-on-scroll class
-    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+    // Observe all elements with animation classes
+    const animatedElements = document.querySelectorAll('.animate-on-scroll, .stagger-animate-children');
+    animatedElements.forEach((element) => {
       observer.observe(element);
     });
 
