@@ -14,7 +14,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   className = '',
   once = true
 }) => {
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLElement | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const hasAnimated = useRef(false);
 
@@ -77,15 +77,15 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     };
   }, [text, once]);
 
-  const TagName = tag as keyof JSX.IntrinsicElements;
+  const Component = tag as keyof JSX.IntrinsicElements;
 
   return (
-    <TagName 
+    <Component 
       ref={elementRef as React.RefObject<any>} 
       className={className}
     >
       {text}
-    </TagName>
+    </Component>
   );
 };
 

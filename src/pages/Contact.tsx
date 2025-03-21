@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Hero from '@/components/Hero';
 import AnimatedText from '@/components/AnimatedText';
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, AlertCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageSquare, AlertCircle, ChevronRight } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
 const Contact = () => {

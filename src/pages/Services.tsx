@@ -1,4 +1,3 @@
-
 import Hero from '@/components/Hero';
 import AnimatedText from '@/components/AnimatedText';
 import ServiceItem from '@/components/ServiceItem';
@@ -6,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { 
   Cpu, Monitor, HardDrive, Headphones, Settings, Tablet, 
   Wifi, Shield, Clock, Users, Star, BarChart, Server, Database,
-  Tool, HelpCircle, Zap
+  Wrench, HelpCircle, Zap
 } from 'lucide-react';
 
 const Services = () => {
@@ -36,7 +35,7 @@ const Services = () => {
       ]
     },
     {
-      icon: <Tool size={24} />,
+      icon: <Wrench size={24} />,
       title: 'PC & Laptop Repairs',
       description: 'Expert diagnosis and repair of hardware and software issues.',
       features: [
