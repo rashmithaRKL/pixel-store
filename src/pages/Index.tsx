@@ -71,7 +71,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="no-fouc">
+    <div className="w-full">
       {/* Hero Section */}
       <Hero
         title="Cutting-Edge Computing Solutions"
@@ -83,7 +83,7 @@ const Index = () => {
 
       {/* Featured Products Section */}
       <section className="py-20 bg-background">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold mb-2">
@@ -118,7 +118,7 @@ const Index = () => {
 
       {/* Services Overview */}
       <section className="py-20 bg-card">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
               <AnimatedText text="Expert Tech Services" />
@@ -156,7 +156,7 @@ const Index = () => {
       {/* Call to Action */}
       <section className="py-20 bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 z-0"></div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 relative z-10 mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               <AnimatedText text="Ready to Upgrade Your Tech?" />

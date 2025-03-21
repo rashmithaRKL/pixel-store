@@ -14,7 +14,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   className = '',
   once = true
 }) => {
-  // Using a more specific ref type with generic ElementType
+  // Create a generic ref that accommodates all possible HTML elements
   const elementRef = useRef<HTMLElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const hasAnimated = useRef(false);
@@ -78,16 +78,16 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     };
   }, [text, once]);
 
-  // Create a simplified type handling for dynamic component
-  const DynamicComponent = tag;
-
+  // Use createElement instead of JSX to handle dynamic component type
+  const Element = tag as keyof JSX.IntrinsicElements;
+  
   return (
-    <DynamicComponent
-      ref={elementRef}
+    <Element
+      ref={elementRef as any}
       className={className}
     >
       {text}
-    </DynamicComponent>
+    </Element>
   );
 };
 
