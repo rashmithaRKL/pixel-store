@@ -9,7 +9,7 @@ It offers custom PC builds, expert hardware upgrades, professional repairs, data
 This project is developed by Dexlanka Software Solutions — dexlanka.com.
 
 You can view the live website here: Visit Tranquil Haven
-(Replace # with your published site link)
+(https://rashmitharkl.github.io/pixel-store/)
 
 Features
 
